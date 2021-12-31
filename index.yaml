@@ -2,10 +2,10 @@ apiVersion: v1
 entries:
   missing-container-metrics:
   - apiVersion: v2
-    appVersion: 0.21.0
-    created: "2021-12-31T15:49:40.479163014Z"
+    appVersion: 0.22.0
+    created: "2021-12-31T16:02:56.184376057Z"
     description: A Helm chart for installing missing-container-metrics exporter
-    digest: 957276778f6dd08c30c257612260dbc7cf7086793adc60b9bf406f2b38051e53
+    digest: 652b5ba1c99f69e942c2ddb5af32a3a3aa115309cb299609a6ec75d24a7ffdfb
     name: missing-container-metrics
     type: application
     urls:
@@ -13,7 +13,7 @@ entries:
     version: 0.22.0
   - apiVersion: v2
     appVersion: 0.21.0
-    created: "2021-12-31T15:49:40.479664418Z"
+    created: "2021-12-31T16:02:56.184956969Z"
     description: A Helm chart for installing missing-container-metrics exporter
     digest: f8c16379c77b2b7e63ac1e79e4435a1235198d07551d67b0206d204eb8c0db82
     name: missing-container-metrics
@@ -21,4 +21,4 @@ entries:
     urls:
     - https://cablespaghetti.github.io/missing-container-metrics/missing-container-metrics-0.3.0.tgz
     version: 0.3.0
-generated: "2021-12-31T15:49:40.478467309Z"
+generated: "2021-12-31T16:02:56.18356384Z"
