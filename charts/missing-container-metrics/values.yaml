@@ -53,6 +53,19 @@ useContainerd: true
 # Override containerd socket path. Bottlerocket uses /run/dockershim.sock even though it uses containerd.
 containerdSocketPath: /run/containerd/containerd.sock
 
+## @param nodeSelector - object - optional
+## Allow the Cluster Agent Deployment to schedule on selected nodes
+## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#nodeselector
+## Ref: https://kubernetes.io/docs/user-guide/node-selection/
+#
+nodeSelector: {}
+
+## @param affinity - object - optional
+## Allow the Cluster Agent Deployment to schedule using affinity rules
+## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
+#
+affinity: {}
+
 prometheusOperator:
   podMonitor:
     # Create a Prometheus Operator PodMonitor resource
@@ -74,16 +87,15 @@ prometheusOperator:
       # app: "kube-prometheus-stack"
     # The rules can be set here. An example is defined here but can be overridden.
     rules:
-    - alert: ContainerOOMObserved
-      annotations:
-        message: A process in this Pod has been OOMKilled due to exceeding the Kubernetes memory limit at least twice in the last 15 minutes. Look at the metrics to determine if a memory limit increase is required.
-      expr: max(increase(container_ooms[15m])) by (exported_namespace, exported_pod) > 2
-      labels:
-        severity: warning
-    - alert: ContainerOOMObserved
-      annotations:
-        message: A process in this Pod has been OOMKilled due to exceeding the Kubernetes memory limit at least ten times in the last 15 minutes. Look at the metrics to determine if a memory limit increase is required.
-      expr: max(increase(container_ooms[15m])) by (exported_namespace, exported_pod) > 10
-      labels:
-        severity: critical
-
+      - alert: ContainerOOMObserved
+        annotations:
+          message: A process in this Pod has been OOMKilled due to exceeding the Kubernetes memory limit at least twice in the last 15 minutes. Look at the metrics to determine if a memory limit increase is required.
+        expr: max(increase(container_ooms[15m])) by (exported_namespace, exported_pod) > 2
+        labels:
+          severity: warning
+      - alert: ContainerOOMObserved
+        annotations:
+          message: A process in this Pod has been OOMKilled due to exceeding the Kubernetes memory limit at least ten times in the last 15 minutes. Look at the metrics to determine if a memory limit increase is required.
+        expr: max(increase(container_ooms[15m])) by (exported_namespace, exported_pod) > 10
+        labels:
+          severity: critical
