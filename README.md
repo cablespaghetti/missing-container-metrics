@@ -2,7 +2,7 @@
 
 Fork of [draganm/missing-container-metrics](https://github.com/draganm/missing-container-metrics).
 
-**STATUS: stable, maintained**
+**STATUS: Archived as for my use case `kube_pod_container_status_restarts_total` (kube-state-metrics) and `container_oom_events_total` (kubelet) replace the need for this project.**
 
 cadvisor is great, but missing a few important metrics, that every serious devops person wants to know about.
 This is a secondary process to export all the missing [Prometheus](https://prometheus.io) metrics:
